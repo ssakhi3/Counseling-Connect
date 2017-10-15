@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<h1>Login With your GTID</h1>
+	<title>Student Portal</title>
+</head>
+<body>
+
+<form>
+  Username:<br>
+  <input type="text" id="username" value="{{uname}}"><br>
+  Password:<br>
+  <input type="password" id="password" value="{{pword}}"><br>
+  
+  <!-- Content:<br>
+  <textarea id="content" rows="5" cols="80">{{content}}</textarea> -->
+  <br>
+</form>
+
+<button type="button" onclick="checkUserData('{{usersList}}')">Submit</button> <br>
+
+</body>
+
+<script type="text/javascript" src="{{url_for('static', filename='js/jquery.js')}}"></script>
+<script type="text/javascript">
+	
+	var checkUserData = function(theList) {
+		console.log("here");
+
+		var username = $('#username').value;
+	    var password = $('#password').value;
+	    
+
+	    console.log(theList)
+	    for (var i = 0; i < theList.length; i = i + 1) {
+	    	
+	    	if (theList[i].username === username && theList[i].password === password){
+
+	    		window.location.replace("/form")
+
+	    	}
+	    }
+	    window.location.replace("/form")
+
+
+
+	};
+
+
+</script>
+
+</html>
+
+
+
+<!-- usersJson = list(db.users.find({}))
+	# takes users from mongo and converts them into a User object
+	users = map(User.from_json, usersJson)
+ -->
